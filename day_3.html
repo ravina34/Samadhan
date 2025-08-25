@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Marks Calculator</title>
+  </head>
+  <body>
+    <h2>Student Marks Calculator</h2>
+
+    <label>Maths: </label>
+    <input type="number" id="maths" /><br /><br />
+
+    <label>Science: </label>
+    <input type="number" id="science" /><br /><br />
+
+    <label>English: </label>
+    <input type="number" id="english" /><br /><br />
+
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+      function calculate() {
+        let maths = parseInt(document.getElementById("maths").value) || 0;
+        let science = parseInt(document.getElementById("science").value) || 0;
+        let english = parseInt(document.getElementById("english").value) || 0;
+
+        let total = maths + science + english;
+        let percentage = (total / 300) * 100;
+
+        let grade = "";
+        if (percentage >= 90) grade = "A+";
+        else if (percentage >= 75) grade = "A";
+        else if (percentage >= 60) grade = "B";
+        else if (percentage >= 40) grade = "C";
+        else grade = "Fail";
+
+        document.getElementById(
+          "result"
+        ).innerHTML = `Total Marks: ${total}<br>Percentage: ${percentage.toFixed(
+          2
+        )}%<br>Grade: ${grade}`;
+      }
+    </script>
+  </body>
+</html>
